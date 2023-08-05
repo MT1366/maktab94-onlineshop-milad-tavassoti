@@ -6,6 +6,7 @@ import PaymentPage from "./pages/payment-page/PaymentPage";
 import Product from "./pages/product/Product";
 import ProductBascket from "./pages/product-bascket/ProductBascket";
 import PageNotFound from "./pages/PageNotFound";
+import AppLayout from "./pages/app-layout/AppLayout";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="app" element={<AppLayout />} />
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="loginpage" element={<Login />} />
           <Route path="paymentpage" element={<PaymentPage />} />

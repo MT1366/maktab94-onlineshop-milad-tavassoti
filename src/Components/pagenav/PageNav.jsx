@@ -1,18 +1,21 @@
 import { NavLink } from "react-router-dom";
 import styles from "./PageNav.modules.css";
+import Logo from "../logo/Logo";
 
 export default function PageNav() {
   return (
-    <nav className={styles.nav}>
+    <nav className="navigation">
+      <Logo />
+
       <ul>
         <li>
           <NavLink to="/">Home Page</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard">Dashboard</NavLink>
+          <NavLink to="/loginpage">Login Page</NavLink>
         </li>
         <li>
-          <NavLink to="/loginpage">Login Page</NavLink>
+          <NavLink to="/dashboard">Dashboard</NavLink>
         </li>
         <li>
           <NavLink to="/paymentpage">Payment</NavLink>

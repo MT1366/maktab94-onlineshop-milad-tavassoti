@@ -1,11 +1,11 @@
-import PageNav from "../../Components/PageNav";
+import PageNav from "../../Components/pagenav/PageNav";
 
 export default function ProductBascket() {
   return (
     <div>
       <PageNav />
 
-      <h1>PoductBascket</h1>
+      <h1>ProductBascket</h1>
     </div>
   );
 }

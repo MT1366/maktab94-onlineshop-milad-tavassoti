@@ -1,10 +1,11 @@
-import PageNav from "../../Components/PageNav";
+import Dashboard from "../../Components/dashboard/Dashboard";
+import PageNav from "../../Components/pagenav/PageNav";
 
 export default function AdminDashboard() {
   return (
     <div>
       <PageNav />
-      <h1>AdminDashboard</h1>
+      <Dashboard />
     </div>
   );
 }

@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 export default function Logo() {
-  return <div>Logo</div>;
+  return <NavLink to="/">LOGO</NavLink>;
 }

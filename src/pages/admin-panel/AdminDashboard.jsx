@@ -7,6 +7,7 @@ export default function AdminDashboard() {
       <PageNav />
 
       <Dashboard />
+      <h1>Table of products</h1>
     </div>
   );
 }

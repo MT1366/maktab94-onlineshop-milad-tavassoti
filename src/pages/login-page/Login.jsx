@@ -1,10 +1,10 @@
 import PageNav from "../../Components/pagenav/PageNav";
-
+import LoginForm from "../../Components/login-form/LoginForm";
 export default function Login() {
   return (
-    <div>
+    <div className="bg-[url('/src/images/loginformimage.jpg')]">
       <PageNav />
-      <h1>Login</h1>
+      <LoginForm />
     </div>
   );
 }

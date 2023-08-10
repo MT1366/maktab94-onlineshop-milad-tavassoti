@@ -1,8 +1,10 @@
+import { Button } from "@material-tailwind/react";
+
 export default function Orders() {
   return (
-    <div className="flex flex-row justify-between">
+    <div className="flex justify-around items-center p-5">
       <h2>Orders Management</h2>
-      <button>save</button>
+      <Button variant="outlined">Save</Button>
     </div>
   );
 }

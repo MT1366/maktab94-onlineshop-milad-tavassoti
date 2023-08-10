@@ -1,13 +1,12 @@
 import { NavLink } from "react-router-dom";
-import styles from "./PageNav.modules.css";
 import Logo from "../logo/Logo";
 
 export default function PageNav() {
   return (
-    <nav className="navigation">
+    <nav className="flex justify-between m-5">
       <Logo />
 
-      <ul>
+      <ul className="flex flex-row gap-5">
         <li>
           <NavLink to="/">Home Page</NavLink>
         </li>

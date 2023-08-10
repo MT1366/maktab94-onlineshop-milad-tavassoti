@@ -31,6 +31,7 @@ const router = createBrowserRouter([
       {
         path: "products",
         element: <Products />,
+        index: true,
       },
       {
         path: "inventory",

@@ -1,7 +1,7 @@
 export default function Orders() {
   return (
-    <div className="flex justify-between items-center">
-      <h2>orders management</h2>
+    <div>
+      <h2>Orders Management</h2>
       <button>save</button>
     </div>
   );

@@ -10,11 +10,11 @@ export default function HomePage() {
       <div
         style={{ border: "2px solid grey", marginTop: "50px", padding: "10px" }}
       >
+        <Link to="/dashboard">Go to dashboard</Link>
         <h2>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
           sequi eaque eius cum modi error earum architecto a consequatur quasi.
         </h2>
-        <Link to="/dashboard">Go to dashboard</Link>
       </div>
     </div>
   );

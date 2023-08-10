@@ -1,28 +1,22 @@
 import { NavLink } from "react-router-dom";
+import { ButtonGroup, Button } from "@material-tailwind/react";
 
 export function Btns() {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-around",
-        alignItems: "center",
-        flexDirection: "row",
-      }}
-    >
+    <div className="flex flex-row align-center justify-around">
       <h2>List of Products</h2>
 
-      <ul style={{ display: "flex", gap: "30px" }}>
-        <li>
+      <ButtonGroup variant="outlined">
+        <Button>
           <NavLink to="orders">Orders</NavLink>
-        </li>
-        <li>
+        </Button>
+        <Button>
           <NavLink to="inventory">Pricing And Inventory</NavLink>
-        </li>
-        <li>
+        </Button>
+        <Button>
           <NavLink to="products">Products</NavLink>
-        </li>
-      </ul>
+        </Button>
+      </ButtonGroup>
     </div>
   );
 }

@@ -12,7 +12,23 @@ module.exports = withMT({
   theme: {
     extend: {
       backgroundImage: {
-        "login-image": "url('src/images/loginformimage.jpg')",
+        "login-image": "url('src/images/loginformimage.png')",
+      },
+      width: {
+        50: "40vw",
+        50.5: "48vw",
+        51: "50vw",
+        52: "60vw",
+        53: "70vw",
+        54: "75vw",
+        55: "80vw",
+        100: "100vw",
+        101: "45rem",
+      },
+      height: {
+        99: "95vh",
+        100: "100vh",
+        129: "800px",
       },
     },
   },

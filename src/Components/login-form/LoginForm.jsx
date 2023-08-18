@@ -2,16 +2,11 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { CookiesProvider, useCookies } from "react-cookie";
+import Logo from "../logo/Logo";
 
 // import { useState } from "react";
-
-import {
-  Card,
-  Input,
-  Checkbox,
-  Button,
-  Typography,
-} from "@material-tailwind/react";
+له;
+import { Input, Checkbox, Button, Typography } from "@material-tailwind/react";
 
 export default function LoginForm() {
   const { register, handleSubmit, formState } = useForm();
@@ -59,20 +54,24 @@ export default function LoginForm() {
   }
 
   return (
-    <>
-      <div className="flex flex-col justify-center items-center p-auto p-40 sm:flex-row sm:items-center ">
-        <Card className="w-80 h-96 bg-blue-700 md:w-96">
-          <div className="flex flex-col p-5">
-            <Typography variant="h4" color="white">
+    <div className="flex flex-col justify-center md:flex-row">
+      <div className="w-53 flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center">
+          <Logo className="w-20" />
+          <p className="text-blue-500">SHOPIFY</p>
+        </div>
+        <div className="md:w-101">
+          <div className="flex flex-col justify-center">
+            <Typography variant="h4" color="blue">
               Log In To Admin Panel
             </Typography>
-            <Typography color="white" className="mt-1 font-normal">
+            <Typography color="blue" className="mt-1 font-normal">
               Enter your Authorized Usernam and Password.
             </Typography>
             <CookiesProvider>
               <form
                 onSubmit={handleSubmit(onSubmit, onError)}
-                className=" text-white mt-6 m-2"
+                className=" mt-6"
               >
                 <div className=" flex flex-col gap-5">
                   <Input
@@ -84,11 +83,11 @@ export default function LoginForm() {
                     size="lg"
                     label="Username"
                     type="text"
-                    color="white"
+                    color="blue"
                     icon={<i className="fas fa-heart" />}
                   />
                   {errors?.username && (
-                    <p className="text-red-600 text-xs font-light relative animate-bounce">
+                    <p className="text-red-900 text-xs font-light relative animate-bounce">
                       This field is required
                     </p>
                   )}
@@ -101,11 +100,11 @@ export default function LoginForm() {
                     id="password"
                     size="lg"
                     label="Password"
-                    color="white"
+                    color="blue"
                   />
                   {errors?.password && (
                     <>
-                      <p className="text-red-600 text-xs font-light absoulute animate-bounce">
+                      <p className="text-red-900 text-xs font-light absoulute animate-bounce">
                         This field is required
                       </p>
                     </>
@@ -116,12 +115,12 @@ export default function LoginForm() {
                     <Typography
                       variant="small"
                       className="flex items-center font-normal"
-                      color="white"
+                      color="blue"
                     >
                       I agree the
                       <a
                         href="#"
-                        className="font-medium transition-colors hover:text-white"
+                        className="font-medium transition-colors hover:text-blue"
                       >
                         &nbsp;Terms and Conditions
                       </a>
@@ -129,17 +128,16 @@ export default function LoginForm() {
                   }
                   containerProps={{ className: "-ml-2.5" }}
                 />
-                <Button type="submit" fullWidth>
+                <Button color="blue" type="submit" fullWidth>
                   Log In
                 </Button>
               </form>
             </CookiesProvider>
           </div>
-        </Card>
-        <Card className="w-80 h-96 border bg-[url('src/images/loginformimage.jpg')] bg-center bg-contain bg-no-repeat md:w-96">
-          {" "}
-        </Card>
+        </div>
       </div>
-    </>
+      {/*IMAGE OF RIGHT SIDE */}
+      <div className="w-50 lg:w-50 lg:h-100 lg:bg-[url('src/images/loginformimage.png')] bg-contain bg-no-repeat bg-center"></div>
+    </div>
   );
 }

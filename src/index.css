@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: roboto-medium;
+  src: url(./fonts/static/WorkSans-Medium.ttf);
+}
+
+* {
+  font-family: roboto-medium;
+}
+
 a {
   font-weight: 500;
   text-decoration: inherit;

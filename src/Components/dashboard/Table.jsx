@@ -1,5 +1,4 @@
 import { Card, Typography } from "@material-tailwind/react";
-import { Outlet } from "react-router-dom";
 
 const TABLE_HEAD = ["Name", "Job", "Employed", ""];
 
@@ -33,11 +32,8 @@ const TABLE_ROWS = [
 
 export function Table() {
   return (
-    <>
-      <div className="flex flex-col justify-center">
-        <Outlet />
-      </div>
-      <Card className="h-full w-full overflow-scroll">
+    <div className="w-full mt-4 h-auto">
+      <Card className=" overflow-auto">
         <table className="w-full min-w-max table-auto text-center">
           <thead>
             <tr>
@@ -58,7 +54,7 @@ export function Table() {
             </tr>
           </thead>
           <tbody>
-            {TABLE_ROWS.map(({ name, job, date }, index) => (
+            {TABLE_ROWS.map(({ name, job, date }) => (
               <tr key={name} className="even:bg-blue-gray-50/50">
                 <td className="p-4">
                   <Typography
@@ -103,6 +99,8 @@ export function Table() {
           </tbody>
         </table>
       </Card>
-    </>
+
+      <h2>Pagination</h2>
+    </div>
   );
 }

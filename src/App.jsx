@@ -10,7 +10,9 @@ import AppLayout from "./pages/app-layout/AppLayout";
 import Orders from "./pages/admin-panel/Orders";
 import PricingInventory from "./pages/admin-panel/PricingInventory";
 import Products from "./pages/admin-panel/Products";
+import SignUpForm from "./pages/signup-page/SignUpForm";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import ProtectedRoute from "./protected-route/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -24,14 +26,20 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "dashboard",
-    element: <AdminDashboard />,
-
+    path: "dashboard/",
+    element: (
+      <ProtectedRoute>
+        <AdminDashboard />
+      </ProtectedRoute>
+    ),
     children: [
       {
-        path: "products",
-        element: <Products />,
         index: true,
+        element: <Products />,
+      },
+      {
+        path: "products/",
+        element: <Products />,
       },
       {
         path: "inventory",
@@ -46,6 +54,10 @@ const router = createBrowserRouter([
   {
     path: "loginpage",
     element: <Login />,
+  },
+  {
+    path: "signup-page",
+    element: <SignUpForm />,
   },
 
   {

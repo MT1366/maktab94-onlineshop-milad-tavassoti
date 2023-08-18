@@ -3,7 +3,7 @@ import { ButtonGroup, Button } from "@material-tailwind/react";
 
 export function Btns() {
   return (
-    <div className="flex flex-row align-center justify-around">
+    <div className="flex flex-row pt-5 align-center justify-around">
       <h2>List of Products</h2>
 
       <ButtonGroup variant="outlined">

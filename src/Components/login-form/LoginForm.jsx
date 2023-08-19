@@ -5,7 +5,7 @@ import { CookiesProvider, useCookies } from "react-cookie";
 import Logo from "../logo/Logo";
 
 // import { useState } from "react";
-له;
+
 import { Input, Checkbox, Button, Typography } from "@material-tailwind/react";
 
 export default function LoginForm() {

@@ -8,11 +8,11 @@ export default function Dashboard() {
     <>
       <div className="flex relative md:flex-row flex-col rounded-full p-2">
         <SideMenu />
-        <div className="absolute left-80 top-12 ">
-          <Card className="flex m-1 flex-col w-55 h-129 justify-center bg-white ">
-            <Outlet className="" />
+        <divs className="absolute left-80 top-7 ">
+          <Card className="flex m-1 flex-col w-54 h-98 justify-center bg-white ">
+            <Outlet />
           </Card>
-        </div>
+        </divs>
       </div>
     </>
   );

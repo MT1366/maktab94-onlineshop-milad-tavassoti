@@ -15,6 +15,7 @@ module.exports = withMT({
         "login-image": "url('src/images/loginformimage.png')",
       },
       width: {
+        40: "20vw",
         50: "40vw",
         50.5: "48vw",
         51: "50vw",
@@ -26,9 +27,17 @@ module.exports = withMT({
         101: "45rem",
       },
       height: {
+        98: "90vh",
         99: "95vh",
         100: "100vh",
         129: "800px",
+      },
+      colors: {
+        "regal-blue": "#243c5a",
+        "light-blue": "#0000FF",
+      },
+      left: {
+        110: "500px",
       },
     },
   },

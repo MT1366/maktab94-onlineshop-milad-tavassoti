@@ -1,18 +1,22 @@
-import OrderStatus from "./OrderStatus";
+import RightSide from "../../Components/rightside/RightSide";
+import Main from "../../Components/main/Main";
+// import axios from "axios";
 
 export default function Orders() {
+  // const [order, setOrder] = useState({});
+
+  // const getData = async () => {
+  //   const response = await axios.get("http://localhost:8000/api/categories");
+  //   const { data } = response;
+  //   console.log(data);
+  // };
+
+  // getData();
+
   return (
     <>
-      <div className="flex justify-around items-center p-5">
-        <h2>Orders Management</h2>
-        <OrderStatus />
-      </div>
-      <div className="flex flex-row justify-between ">
-        <h1>ORDES TABLE</h1>
-      </div>
-      <div className="absolute end-0 w-40 h-98 bg-gray-100 border-2 rounded-r-lg">
-        righ side menu
-      </div>
+      <Main />
+      <RightSide />
     </>
   );
 }

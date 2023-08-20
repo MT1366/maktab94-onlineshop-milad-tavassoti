@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export function Btns() {
   return (
-    <div className="flex flex-col gap-3 p-5 align-center justify-around">
+    <div className="flex flex-col max-w-full gap-3 p-5 align-center justify-around">
       <div className=" flex flex-col">
         <ul className="flex flex-col gap-8 mt-10 text-left text-xl w-full">
           <li className="text-grey-200">

@@ -5,14 +5,15 @@ import Login from "./pages/login-page/Login";
 import PaymentPage from "./pages/payment-page/PaymentPage";
 import Product from "./pages/product/Product";
 import ProductBascket from "./pages/product-bascket/ProductBascket";
-// import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./pages/app-layout/AppLayout";
 import Orders from "./pages/admin-panel/Orders";
 import PricingInventory from "./pages/admin-panel/PricingInventory";
 import Products from "./pages/admin-panel/Products";
-import SignUpForm from "./pages/signup-page/SignUpForm";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ProtectedRoute from "./protected-route/ProtectedRoute";
+import { CookiesProvider } from "react-cookie";
+
+import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,9 @@ const router = createBrowserRouter([
     path: "dashboard/",
     element: (
       <ProtectedRoute>
-        <AdminDashboard />
+        <CookiesProvider>
+          <AdminDashboard />
+        </CookiesProvider>
       </ProtectedRoute>
     ),
     children: [
@@ -55,11 +58,6 @@ const router = createBrowserRouter([
     path: "loginpage",
     element: <Login />,
   },
-  {
-    path: "signup-page",
-    element: <SignUpForm />,
-  },
-
   {
     path: "paymentpage",
     element: <PaymentPage />,

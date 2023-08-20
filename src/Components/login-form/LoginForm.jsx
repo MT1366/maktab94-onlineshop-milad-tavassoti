@@ -1,11 +1,10 @@
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { CookiesProvider, useCookies } from "react-cookie";
+import { toast } from "react-toastify";
+
+import axios from "axios";
 import Logo from "../logo/Logo";
-
-// import { useState } from "react";
-
 import { Input, Checkbox, Button, Typography } from "@material-tailwind/react";
 
 export default function LoginForm() {
@@ -20,32 +19,27 @@ export default function LoginForm() {
   const navigate = useNavigate();
   const { errors } = formState;
 
-  // THIS PART IS FOR CONDITIONAL RENDERING FOR BETTER UI - CHECK IT LATER
-  // const [isLogin, setIsLogin] = useState(false);
-  // const [isLoading, setIsLoading] = useState(false);
-
   function onSubmit(data) {
-    // POST DATA USING AXIOS AND COMPARE WITH DATA BASE
-    // console.log(data);
-
     axios
       .post("http://localhost:8000/api/auth/login", data)
       .then(function (response) {
-        // setIsLoading(true);
-        // console.log(token);
-
         console.log(response);
         const { accessToken, refreshToken } = response.data.token;
 
         setCookie("accessToken", accessToken);
         setCookie("refreshToken", refreshToken);
         navigate("/dashboard");
+        toast.success("Welcome aboard", {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 2000, //2 seconds
+        });
       })
       .catch(function () {
-        // setIsLogin(false);
-        // const errorMessage = error.message;
-        alert("You Are Not Authorized for accessing this page,please signup");
-        navigate("/signup-page");
+        navigate("/");
+        toast.error("Yor Are Not Authorized", {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 2000, //3 seconds
+        });
       });
   }
 
@@ -62,13 +56,13 @@ export default function LoginForm() {
         </div>
         <div className="md:w-101">
           <div className="flex flex-col justify-center">
-            <Typography variant="h4" color="blue">
-              Log In To Admin Panel
-            </Typography>
-            <Typography color="blue" className="mt-1 font-normal">
-              Enter your Authorized Usernam and Password.
-            </Typography>
             <CookiesProvider>
+              <Typography variant="h4" color="blue">
+                Log In To Admin Panel
+              </Typography>
+              <Typography color="blue" className="mt-1 font-normal">
+                Enter your Authorized Usernam and Password.
+              </Typography>
               <form
                 onSubmit={handleSubmit(onSubmit, onError)}
                 className=" mt-6"

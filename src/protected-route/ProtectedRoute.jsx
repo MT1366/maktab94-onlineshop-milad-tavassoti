@@ -11,7 +11,7 @@ function ProtectedRoute({ children }) {
   // const { accessToken } = useCookies();
   console.log(cookies);
 
-  return cookies.accessToken ? children : <Navigate to="/signup-page" />;
+  return cookies.accessToken ? children : <Navigate to="/" />;
 }
 
 export default ProtectedRoute;

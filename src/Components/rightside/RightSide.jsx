@@ -5,18 +5,18 @@ export default function RightSide() {
         <p className="pb-8">Where Your Money Goes?</p>
 
         <ul className="text-sm gap-5 flex flex-col">
-          <il className="flex flex-row justify-between">
+          <li className="flex flex-row justify-between">
             <p>Food and Drinks</p>
             <p>284.205 $</p>
-          </il>
-          <il className="flex flex-row justify-between">
+          </li>
+          <li className="flex flex-row justify-between">
             <p>Shopping</p>
             <p>127.205 $</p>
-          </il>
-          <il className="flex flex-row justify-between">
+          </li>
+          <li className="flex flex-row justify-between">
             <p>Housing</p>
             <p>400.205 $</p>
-          </il>
+          </li>
         </ul>
       </div>
       <div className="flex flex-col gap-4 m-7 bg-pale-blue p-4 rounded-2xl">

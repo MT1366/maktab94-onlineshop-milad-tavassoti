@@ -1,5 +1,5 @@
 import RightSide from "../../Components/rightside/RightSide";
-import Main from "../../Components/main/Main";
+import ProductsTable from "../../Components/tables/ProductsTable";
 
 export default function Products() {
   // const [modal, setModal] = useState(true);
@@ -16,7 +16,7 @@ export default function Products() {
   return (
     <>
       <RightSide />
-      <Main />
+      <ProductsTable />
     </>
   );
 }

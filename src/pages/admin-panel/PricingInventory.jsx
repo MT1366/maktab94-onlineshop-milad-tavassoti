@@ -1,11 +1,11 @@
 import RightSide from "../../Components/rightside/RightSide";
-import Main from "../../Components/main/Main";
+import InventoryTable from "../../Components/tables/InventoryTable";
 
 export default function PricingInventory() {
   return (
     <>
-      <Main />
       <RightSide />
+      <InventoryTable />
     </>
   );
 }

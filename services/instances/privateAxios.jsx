@@ -1,7 +1,7 @@
 import axios from "axios";
 import { BASE_URL } from "../../configs/constants.js";
 import Cookies from "js-cookie";
-import { refreshToken } from "../api/refresh.js";
+import { refreshToken } from "../api/refresh.jsx";
 // import { useCookies } from "react-cookie";
 
 const privateAxios = axios.create({

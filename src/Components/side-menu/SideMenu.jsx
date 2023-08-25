@@ -6,18 +6,18 @@ import { toast } from "react-toastify";
 import { useCookies } from "react-cookie";
 
 export default function SideMenu() {
-  const nav = useNavigate();
+  const navigate = useNavigate();
 
   const [cookies, setCookies, removeCookie] = useCookies(["user"]);
 
   function logOutHandler() {
     removeCookie(["accessToken"], { path: "/" });
-    nav("/");
+    removeCookie(["refreshToken"], { path: "/" });
+    navigate("/");
     toast.warning("Yor're Loged Out", {
       position: toast.POSITION.TOP_RIGHT,
       autoClose: 3000, //3 seconds
     });
-    console.log(nav);
   }
 
   return (

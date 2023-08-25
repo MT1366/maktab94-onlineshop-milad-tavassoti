@@ -9,11 +9,11 @@ export default function Dashboard() {
     <>
       <div className="flex relative max-w-full md:flex-row flex-col rounded-full p-2">
         <SideMenu />
-        <divs className="absolute left-80 top-7 ">
+        <div className="absolute left-80 top-7 ">
           <Card className="flex m-1 flex-col w-54 h-98 justify-center bg-white ">
             <Outlet />
           </Card>
-        </divs>
+        </div>
       </div>
       <div>
         <ToastContainer />;

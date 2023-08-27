@@ -5,7 +5,9 @@ import { Button, Card, Typography } from "@material-tailwind/react";
 
 export default function OrdersTable() {
   const order = useSelector((store) => store.orders);
+  console.log(order);
   const { orders } = order;
+  console.log(orders);
 
   const dispatch = useDispatch();
 

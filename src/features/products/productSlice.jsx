@@ -3,10 +3,13 @@ import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchProducts = createAsyncThunk(
-  "users/fetchByIdStatus",
-  async () => {
-    const response = await axios.get("http://localhost:8000/api/categories");
-    const products = response.data.data.categories;
+  "products/fetchByProduct",
+  async (page) => {
+    const response = await axios.get(
+      `http://localhost:8000/api/products?page=${page}`
+    );
+    const products = response.data.data.products;
+    // console.log(products);
     return products;
   }
 );
@@ -36,5 +39,5 @@ const productSlice = createSlice({
   },
 });
 
-export default productSlice.reducer;
 export const { getProduct, addProduct } = productSlice.actions;
+export default productSlice.reducer;

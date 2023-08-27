@@ -1,13 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../../features/products/productSlice";
 import { useEffect } from "react";
 
-import { Button, Card, Typography } from "@material-tailwind/react";
+import { fetchProducts } from "../../features/products/productSlice";
+
+import { Avatar, Button, Card, Typography } from "@material-tailwind/react";
+
+import Pagination from "@mui/material/Pagination";
 
 export default function ProductsTable() {
-  const product = useSelector((store) => store.products);
-  const { products } = product;
-  console.log(products);
+  const product = useSelector((store) => store.products.products);
+  const cat = useSelector((store) => store.cat.categories);
+
+  console.log(cat);
+  // console.log(product);
 
   const dispatch = useDispatch();
 
@@ -17,16 +22,20 @@ export default function ProductsTable() {
 
   const TABLE_HEAD = ["ProductsName", "Image", "Category", "Edit / Delete"];
 
-  // const TABLE_ROWS = products;
-  // console.log(TABLE_ROWS);
+  async function handlePage(event, page) {
+    dispatch(fetchProducts(page));
+  }
 
   return (
     <main className="flex flex-col ">
       <div className="h-10 w-52 border-bottom p-1">Header</div>
       <div className="h-50 w-52 p-1">
+        <Button color="blue" className="relative left-0">
+          Add Product
+        </Button>
         <Card className="h-full w-51.5 overflow-auto items-center">
           <table className="w-full min-w-max table-auto text-left">
-            <thead className="text-center">
+            <thead className="text-left">
               <tr>
                 {TABLE_HEAD.map((head) => (
                   <th
@@ -45,47 +54,46 @@ export default function ProductsTable() {
               </tr>
             </thead>
             <tbody>
-              {products.map(({ name, icon, id, createdAt }, index) => {
-                const isLast = index === products.length - 1;
+              {/* {product?.data?.products.map( */}
+              {product.map(({ name, images, id, category }, index) => {
+                const isLast = index === product.length - 1;
                 const classes = isLast
                   ? "p-4"
                   : "p-4 border-b border-blue-gray-50";
 
+                const imageUrl = `http://localhost:8000/images/products/images/${images[0]}`;
+
+                const categoryName =
+                  cat.find((c) => c._id === category)?.name || "";
                 return (
                   <>
                     <tr key={id}>
-                      <td className={classes}>
+                      <td key={id} className={classes}>
                         <Typography
                           variant="small"
                           color="blue-gray"
-                          className="font-normal text-center"
+                          className="text-sm font-normal text-left"
                         >
                           {name}
                         </Typography>
                       </td>
-                      <td className={classes}>
+                      <td key={id} className={classes}>
+                        <Avatar src={imageUrl} alt={name} size="xl" />
+                      </td>
+                      <td key={id} className={classes}>
                         <Typography
                           variant="small"
                           color="blue-gray"
-                          className="font-normal text-center"
+                          className="font-normal text-left"
                         >
-                          {icon}
+                          {categoryName}
                         </Typography>
                       </td>
-                      <td className={classes}>
+                      <td key={id} className={classes}>
                         <Typography
                           variant="small"
                           color="blue-gray"
-                          className="font-normal text-center"
-                        >
-                          {createdAt}
-                        </Typography>
-                      </td>
-                      <td className={classes}>
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal text-center"
+                          className="font-normal text-left"
                         >
                           <Button color="blue">Edit</Button>
                           <Button color="blue">Delet</Button>
@@ -97,6 +105,9 @@ export default function ProductsTable() {
               })}
             </tbody>
           </table>
+          <Card className="w-full border p-1">
+            <Pagination className="sticky" onChange={handlePage} count={3} />
+          </Card>
         </Card>
       </div>
       <div className="h-30 w-52 border p-1">ICONS</div>

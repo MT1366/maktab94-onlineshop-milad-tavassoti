@@ -2,11 +2,13 @@ import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchInventory = createAsyncThunk(
-  "users/fetchByIdStatus",
-  async () => {
-    const response = await axios.get("http://localhost:8000/api/subcategories");
+  "inventory/fetchByInventory",
+  async (page) => {
+    const response = await axios.get(
+      `http://localhost:8000/api/products?page=${page}`
+    );
     console.log(response);
-    const inventory = response.data.data.subcategories;
+    const inventory = response.data.data.products;
     // console.log(inventory);
     return inventory;
   }

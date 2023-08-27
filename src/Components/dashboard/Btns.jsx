@@ -9,13 +9,13 @@ import { fetchInventory } from "../../features/inventory/inventorySlice";
 export function Btns() {
   const dispatch = useDispatch();
 
+  function productHandler() {
+    dispatch(fetchProducts());
+  }
   function orderHandler() {
     dispatch(fetchOrders());
   }
 
-  function productHandler() {
-    dispatch(fetchProducts());
-  }
   function inventoryHandler() {
     dispatch(fetchInventory());
   }
@@ -35,17 +35,6 @@ export function Btns() {
               Products
             </NavLink>
           </li>
-          <li className="text-grey-200">
-            <NavLink
-              onClick={orderHandler}
-              className={({ isActive }) =>
-                isActive ? "text-white" : "opacity-50"
-              }
-              to="orders"
-            >
-              Orders
-            </NavLink>
-          </li>
           <li>
             <NavLink
               onClick={inventoryHandler}
@@ -55,6 +44,17 @@ export function Btns() {
               to="inventory"
             >
               Pricing And Inventory
+            </NavLink>
+          </li>
+          <li className="text-grey-200">
+            <NavLink
+              onClick={orderHandler}
+              className={({ isActive }) =>
+                isActive ? "text-white" : "opacity-50"
+              }
+              to="orders"
+            >
+              Orders
             </NavLink>
           </li>
         </ul>

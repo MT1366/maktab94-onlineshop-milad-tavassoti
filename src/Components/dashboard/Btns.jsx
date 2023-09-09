@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { fetchOrders } from "../../features/orders/orderSlice";
 import { fetchProducts } from "../../features/products/productSlice";
 import { fetchInventory } from "../../features/inventory/inventorySlice";
+// import { fetchSubCategories } from "../../features/subcategory/subCategory";
 // import { getPendingDeliveryOrders } from "../../features/orders/orderSlice";
 // import { getDeliveredOrders } from "../../features/orders/orderSlice";
 
@@ -11,6 +12,7 @@ export function Btns() {
 
   function productHandler() {
     dispatch(fetchProducts());
+    // dispatch(fetchSubCategories());
   }
   function orderHandler() {
     dispatch(fetchOrders());

@@ -1,4 +1,6 @@
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CookiesProvider } from "react-cookie";
+
 import AdminDashboard from "./pages/admin-panel/AdminDashboard";
 import HomePage from "./pages/home-page/HomePage";
 import Login from "./pages/login-page/Login";
@@ -11,7 +13,6 @@ import PricingInventory from "./pages/admin-panel/PricingInventory";
 import Products from "./pages/admin-panel/Products";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ProtectedRoute from "./protected-route/ProtectedRoute";
-import { CookiesProvider } from "react-cookie";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
     children: [
       // {
       //   index: true,
-      //   element: <Products />,
+      //   element: <Product />,
       // },
       {
         path: "products",
@@ -63,7 +64,7 @@ const router = createBrowserRouter([
     element: <PaymentPage />,
   },
   {
-    path: "product",
+    path: "product/:id",
     element: <Product />,
   },
   {

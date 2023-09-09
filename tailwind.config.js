@@ -23,6 +23,7 @@ module.exports = withMT({
         "skincare-image": "url('src/images/groups/skincare.png')",
         "shoes-image": "url('src/images/groups/shoes.png')",
         "electronics-image": "url('src/images/groups/electronics.png')",
+        "why-choose-image": "url('src/images/Why-Choose.png')",
       },
       width: {
         10: "8vw",
@@ -42,10 +43,12 @@ module.exports = withMT({
         101: "45rem",
       },
       height: {
+        9: "8vh",
         10: "10vh",
         20: "20vh",
         30: "30vh",
         40: "40vh",
+        45: "45vh",
         50: "50vh",
         60: "60vh",
         98: "90vh",

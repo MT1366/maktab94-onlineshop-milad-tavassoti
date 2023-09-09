@@ -11,13 +11,12 @@ export default function LoginForm() {
   const { register, handleSubmit, formState } = useForm();
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
-  // WRITE A FUNCTION FOR LOGOUT BTN WITH THIS
-
-  // removeCookie("user", "20:14:00");
-  // const date = new Date();
-
   const navigate = useNavigate();
   const { errors } = formState;
+
+  function onError(errors) {
+    console.log(errors.message);
+  }
 
   function onSubmit(data) {
     axios
@@ -43,10 +42,6 @@ export default function LoginForm() {
       });
   }
 
-  function onError(errors) {
-    console.log(errors.message);
-  }
-
   return (
     <div className="flex flex-col justify-center md:flex-row">
       <div className="w-53 flex flex-col items-center justify-center">
@@ -65,45 +60,45 @@ export default function LoginForm() {
               </Typography>
               <form
                 onSubmit={handleSubmit(onSubmit, onError)}
-                className=" mt-6"
+                className=" mt-6 flex flex-col gap-3"
               >
-                <div className=" flex flex-col gap-5">
-                  <Input
-                    {...register("username", {
-                      required: "this field is reqired",
-                      min: {},
-                    })}
-                    id="username"
-                    size="lg"
-                    label="Username"
-                    type="text"
-                    color="blue"
-                    icon={<i className="fas fa-heart" />}
-                  />
-                  {errors?.username && (
-                    <p className="text-red-900 text-xs font-light relative animate-bounce">
+                {/* <div className=" flex flex-col gap-5"> */}
+                <Input
+                  {...register("username", {
+                    required: "this field is reqired",
+                    min: {},
+                  })}
+                  id="username"
+                  size="lg"
+                  label="Username"
+                  type="text"
+                  color="blue"
+                  icon={<i className="fas fa-heart" />}
+                />
+                {errors?.username && (
+                  <p className="text-red-900 text-xs font-light relative animate-bounce">
+                    This field is required
+                  </p>
+                )}
+
+                <Input
+                  {...register("password", {
+                    required: "this field is reqired",
+                  })}
+                  type="password"
+                  id="password"
+                  size="lg"
+                  label="Password"
+                  color="blue"
+                />
+                {errors?.password && (
+                  <>
+                    <p className="text-red-900 text-xs font-light absoulute animate-bounce">
                       This field is required
                     </p>
-                  )}
-
-                  <Input
-                    {...register("password", {
-                      required: "this field is reqired",
-                    })}
-                    type="password"
-                    id="password"
-                    size="lg"
-                    label="Password"
-                    color="blue"
-                  />
-                  {errors?.password && (
-                    <>
-                      <p className="text-red-900 text-xs font-light absoulute animate-bounce">
-                        This field is required
-                      </p>
-                    </>
-                  )}
-                </div>
+                  </>
+                )}
+                {/* </div> */}
                 <Checkbox
                   label={
                     <Typography
@@ -131,7 +126,7 @@ export default function LoginForm() {
         </div>
       </div>
       {/*IMAGE OF RIGHT SIDE */}
-      <div className="w-50 lg:w-50 lg:h-100 lg:bg-[url('src/images/loginformimage.png')] bg-contain bg-no-repeat bg-center"></div>
+      <div className=" lg:w-50 lg:h-100 lg:bg-[url('src/images/loginformimage.png')] bg-contain bg-no-repeat bg-center"></div>
     </div>
   );
 }

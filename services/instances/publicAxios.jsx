@@ -1,6 +1,7 @@
 import axios from "axios";
 import { BASE_URL } from "../../configs/constants.js";
 import { toast } from "react-toastify";
+import { useCookies } from "react-cookie";
 
 const publicAxios = axios.create({
   baseURL: BASE_URL,

@@ -11,10 +11,10 @@ export default function PageNav() {
             <NavLink to="/">Home</NavLink>
           </li>
           <li className="">
-            <NavLink to="products">Products</NavLink>
+            <NavLink to="product/:id">Products</NavLink>
           </li>
           <li className="">
-            <NavLink to="product/">Categories</NavLink>
+            <NavLink to="product/:id">Categories</NavLink>
           </li>
           <li className="">
             <NavLink to="product/">Brand</NavLink>

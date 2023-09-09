@@ -1,18 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-
+import { Avatar, Button, Card, Typography } from "@material-tailwind/react";
 import { fetchProducts } from "../../features/products/productSlice";
 
-import { Avatar, Button, Card, Typography } from "@material-tailwind/react";
-
+import Modal from "../modal/Modal";
 import Pagination from "@mui/material/Pagination";
 
 export default function ProductsTable() {
   const product = useSelector((store) => store.products.products);
   const cat = useSelector((store) => store.cat.categories);
+  const subCat = useSelector((store) => store.subCat.subCat);
 
-  console.log(cat);
-  // console.log(product);
+  // console.log(cat);
 
   const dispatch = useDispatch();
 
@@ -30,9 +29,7 @@ export default function ProductsTable() {
     <main className="flex flex-col ">
       <div className="h-10 w-52 border-bottom p-1">Header</div>
       <div className="h-50 w-52 p-1">
-        <Button color="blue" className="relative left-0">
-          Add Product
-        </Button>
+        <Modal />
         <Card className="h-full w-51.5 overflow-auto items-center">
           <table className="w-full min-w-max table-auto text-left">
             <thead className="text-left">
@@ -54,7 +51,6 @@ export default function ProductsTable() {
               </tr>
             </thead>
             <tbody>
-              {/* {product?.data?.products.map( */}
               {product.map(({ name, images, id, category }, index) => {
                 const isLast = index === product.length - 1;
                 const classes = isLast
@@ -65,6 +61,7 @@ export default function ProductsTable() {
 
                 const categoryName =
                   cat.find((c) => c._id === category)?.name || "";
+
                 return (
                   <>
                     <tr key={id}>
@@ -106,7 +103,7 @@ export default function ProductsTable() {
             </tbody>
           </table>
           <Card className="w-full border p-1">
-            <Pagination className="sticky" onChange={handlePage} count={3} />
+            <Pagination className="sticky" onChange={handlePage} count={4} />
           </Card>
         </Card>
       </div>

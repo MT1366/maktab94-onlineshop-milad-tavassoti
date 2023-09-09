@@ -9,7 +9,7 @@ import LandingPage from "../../Components/landing-page/LandingPage";
 export default function HomePage() {
   return (
     // <div className="bg-pale-blue h-full w-full">
-    <div>
+    <div className="">
       <div>
         <ToastContainer />
       </div>

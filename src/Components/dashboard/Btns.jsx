@@ -3,6 +3,10 @@ import { NavLink } from "react-router-dom";
 import { fetchOrders } from "../../features/orders/orderSlice";
 import { fetchProducts } from "../../features/products/productSlice";
 import { fetchInventory } from "../../features/inventory/inventorySlice";
+import { HiOutlineArchiveBox } from "react-icons/hi2";
+import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
+import { HiOutlineShoppingCart } from "react-icons/hi2";
+
 // import { fetchSubCategories } from "../../features/subcategory/subCategory";
 // import { getPendingDeliveryOrders } from "../../features/orders/orderSlice";
 // import { getDeliveredOrders } from "../../features/orders/orderSlice";
@@ -30,10 +34,13 @@ export function Btns() {
             <NavLink
               onClick={productHandler}
               className={({ isActive }) =>
-                isActive ? "text-white" : "opacity-50"
+                isActive
+                  ? "text-white flex items-center gap-3"
+                  : "opacity-50 flex items-center gap-3"
               }
               to="products"
             >
+              <HiOutlineArchiveBox />
               Products
             </NavLink>
           </li>
@@ -41,10 +48,13 @@ export function Btns() {
             <NavLink
               onClick={inventoryHandler}
               className={({ isActive }) =>
-                isActive ? "text-white" : "opacity-50"
+                isActive
+                  ? "text-white flex items-center gap-3"
+                  : "opacity-50 flex items-center gap-3"
               }
               to="inventory"
             >
+              <HiOutlineAdjustmentsHorizontal />
               Pricing And Inventory
             </NavLink>
           </li>
@@ -52,10 +62,13 @@ export function Btns() {
             <NavLink
               onClick={orderHandler}
               className={({ isActive }) =>
-                isActive ? "text-white" : "opacity-50"
+                isActive
+                  ? "text-white flex items-center gap-3"
+                  : "opacity-50 flex items-center gap-3"
               }
               to="orders"
             >
+              <HiOutlineShoppingCart />
               Orders
             </NavLink>
           </li>

@@ -27,9 +27,9 @@ export default function LoginForm() {
 
         setCookie("accessToken", accessToken);
         setCookie("refreshToken", refreshToken);
-        navigate("/dashboard");
+        navigate("/dashboard/products");
         toast.success("Welcome aboard", {
-          position: toast.POSITION.TOP_RIGHT,
+          position: toast.POSITION.TOP_CENTER,
           autoClose: 2000, //2 seconds
         });
       })

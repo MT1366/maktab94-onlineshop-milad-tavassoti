@@ -16,7 +16,7 @@ export const fetchInventory = createAsyncThunk(
 
 const initialState = {
   inventory: [],
-  isLodaing: false,
+  isLoading: false,
 };
 
 const inventorySlice = createSlice({
@@ -28,8 +28,12 @@ const inventorySlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(fetchInventory.pending, (state, action) => {
+      state.isLoading = true;
+    });
     builder.addCase(fetchInventory.fulfilled, (state, action) => {
       state.inventory = action.payload;
+      state.isLoading = false;
     });
   },
 });

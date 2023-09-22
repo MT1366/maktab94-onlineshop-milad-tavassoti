@@ -11,6 +11,7 @@ import AppLayout from "./pages/app-layout/AppLayout";
 import Orders from "./pages/admin-panel/Orders";
 import PricingInventory from "./pages/admin-panel/PricingInventory";
 import Products from "./pages/admin-panel/Products";
+import SingleProduct from "./Components/single-product/SingleProduct";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ProtectedRoute from "./protected-route/ProtectedRoute";
 
@@ -45,6 +46,7 @@ const router = createBrowserRouter([
         path: "products",
         element: <Products />,
       },
+
       {
         path: "inventory",
         element: <PricingInventory />,
@@ -58,6 +60,10 @@ const router = createBrowserRouter([
   {
     path: "loginpage",
     element: <Login />,
+  },
+  {
+    path: "singleproducts/:id",
+    element: <SingleProduct />,
   },
   {
     path: "paymentpage",

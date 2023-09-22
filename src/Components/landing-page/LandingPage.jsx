@@ -52,16 +52,18 @@ export default function LandingPage() {
 
         <p className="m-6 p-5 text-lg">Brows The Categories of Shopify</p>
         {/* <div className="flex flex-row w-full m-6 text-center justify-between gap-2 flex-wrap"> */}
+
         <div className="flex gap-5 justify-center flex-wrap">
-          {cat.map(({ _id, name }) => {
+          {cat.map(({ _id, name, icon }) => {
             return (
               <>
-                <div className="flex" style={{ color: "black" }}>
+                <div key={_id} className="flex" style={{ color: "black" }}>
                   <Link
-                    to={`product/${_id}?name=${name}`}
-                    className="flex items-center justify-center rounded-md shadow-lg w-40 h-9 bg-no-repeat bg-contain hover:text-whit bg-yellow-500 hover:text-white"
+                    to={`product/${_id}`}
+                    className="flex items-center justify-center rounded-md shadow-lg w-30 h-10 bg-no-repeat bg-contain hover:text-whit bg-yellow-500 hover:text-white"
                   >
                     <h1>{name.toUpperCase()}</h1>
+                    <img src={icon} alt="" />
                   </Link>
                 </div>
               </>

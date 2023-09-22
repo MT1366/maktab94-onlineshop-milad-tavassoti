@@ -14,6 +14,9 @@ privateAxios.interceptors.request.use(
     if (config.method === "post") {
       config.headers["Authorization"] = `Bearer ${cookies.accessToken}`;
     }
+    // if (config.method === "get") {
+    //   config.headers["Authorization"] = `Bearer ${cookies.accessToken}`;
+    // }
     console.log(config);
     return config;
   },

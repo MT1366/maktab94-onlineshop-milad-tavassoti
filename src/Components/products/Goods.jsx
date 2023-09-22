@@ -1,5 +1,4 @@
-import { Avatar, Button, Card, Typography } from "@material-tailwind/react";
-import { Breadcrumbs } from "@material-tailwind/react";
+import { Card } from "@material-tailwind/react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -17,10 +16,12 @@ export default function Goods() {
     dispatch(fetchProducts());
   }, []);
 
+  console.log(product);
+
   return (
     <>
       <div className="flex flex-wrap m-10 gap-10">
-        {product.map(({ name, images, id, category, price }, index) => {
+        {product.map(({ name, images, _id, category, price, brand }, index) => {
           const isLast = index === product.length - 1;
           const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
 
@@ -28,25 +29,27 @@ export default function Goods() {
 
           const categoryName = cat.find((c) => c._id === category)?.name || "";
 
-          // const categoryName =
-          //   cat.find((c) => c._id === category)?.name || "";
-          // const subCategoryName = cat.find((c) => c._id === id)?.name || "";
           return (
             <>
-              <NavLink to={`/product/${id}`}>
+              <NavLink
+                to={`/singleproducts/${_id}`}
+                key={_id}
+                // onClick={dispatch(fetchProductsById(_id))}
+              >
                 <Card
-                  key={id}
+                  key={_id}
                   className="h-45 justify-center flex flex-col w-40"
                 >
-                  <div key={id} className="h-50">
+                  <div key={_id} className="h-50">
                     <img src={imageUrl} alt={name} size="xl" />
                   </div>
-                  <div key={id} className={classes}>
-                    <h1 className="font-normal text-left p-2">
+                  <div key={_id} className={classes}>
+                    <h1 className="font-normal text-lg text-left">
                       {categoryName}
                     </h1>
+                    <p>{brand}</p>
                   </div>
-                  <div key={id} className="flex justify-between p-2">
+                  <div key={_id} className="flex justify-between p-3">
                     <p>{name}</p>
                     <p>{price}$</p>
                   </div>

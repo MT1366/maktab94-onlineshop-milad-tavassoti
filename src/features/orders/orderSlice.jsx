@@ -16,7 +16,6 @@ const initialState = {
   orders: [],
   deliveredOrders: [],
   pendingDeliveryOrders: [],
-  showOrder: false,
   isLoading: false,
 };
 
@@ -38,8 +37,12 @@ const orderSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(fetchOrders.pending, (state, action) => {
+      state.isLoading = true;
+    });
     builder.addCase(fetchOrders.fulfilled, (state, action) => {
       state.orders = action.payload;
+      state.isLoading = false;
     });
   },
 });

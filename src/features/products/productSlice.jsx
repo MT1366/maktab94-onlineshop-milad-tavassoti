@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { BASE_URL } from "../../configs/constants";
 
 import privateAxios from "../../../services/instances/privateAxios";
 
@@ -10,18 +11,8 @@ export const fetchProducts = createAsyncThunk(
       `http://localhost:8000/api/products?page=${page}`
     );
     const products = response.data.data.products;
-    return products;
-  }
-);
 
-export const fetchProductsById = createAsyncThunk(
-  "product/fetchProductById",
-  async (id) => {
-    const respons = await axios.get(
-      `http://localhost:8000/api/products/&${id}`
-    );
-    const productById = respons.data.data.products;
-    return productById;
+    return products;
   }
 );
 
@@ -29,17 +20,28 @@ export const postProducts = createAsyncThunk(
   "addProduct/postProduct",
   async (form, thunkAPI) => {
     try {
+      // products-64fc9c5eeace44f8a91cd011-1694276702081-1.jpeg
+
+      // 2.UPLOAD IMAGE
+      const imageName = `products-${
+        form.id
+      }-${Math.random()}-1.jpeg`.replaceAll("/", "");
+
+      const imagePath = `${BASE_URL}/${imageName}`;
+      // 1. CREATE PRODUCT
       const response = await privateAxios.post(
         "http://localhost:8000/api/products",
-        form,
+        { ...form, image: imagePath },
         {
           headers: {
-            "Content-Type": "multipart/form-data",
+            "Content-Type": "application/json",
           },
         }
       );
-      // const goods = response.data.data.products;
-      return response;
+      const goods = response.data.data.products;
+
+      console.log(goods);
+      return goods;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
     }
@@ -48,32 +50,37 @@ export const postProducts = createAsyncThunk(
 
 const initialState = {
   products: [],
-  productsById: [],
+  isLoading: false,
 };
 
 const productSlice = createSlice({
-  name: "orders",
+  name: "products",
   initialState,
   reducers: {
     getProduct(state, action) {
       state.products = action.payload;
     },
-    addProduct(state, action) {
+    postProductToState: (state, action) => {
       state.products.push(action.payload);
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchProducts.fulfilled, (state, action) => {
-      state.products = action.payload;
-    });
-    builder.addCase(postProducts.fulfilled, (state, action) => {
-      state.products.push(action.payload);
-    });
-    builder.addCase(fetchProductsById.fulfilled, (state, action) => {
-      state.productsById = action.payload;
-    });
+    builder
+      .addCase(fetchProducts.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchProducts.fulfilled, (state, action) => {
+        state.products = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(postProducts.fulfilled, (state, action) => {
+        console.log("payload:", action.payload);
+        state.products.push(action.payload);
+      });
   },
 });
 
-export const { getProduct, addProduct } = productSlice.actions;
+export const { getProduct, addProduct, fetchProductById, postProductToState } =
+  productSlice.actions;
+
 export default productSlice.reducer;
